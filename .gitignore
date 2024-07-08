@@ -1,0 +1,4 @@
+db/data/
+db/data/mysql.sock
+db/data/*.log
+

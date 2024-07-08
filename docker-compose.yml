@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    networks:
+      - app_network
+
+  app:
+    build: ./app
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_USER=Valery
+      - DATABASE_PASSWORD=P@ssw0rd
+      - DATABASE_NAME=Valery_DB
+    volumes:
+      - ./app/logs:/app/logs
+    depends_on:
+      - db
+    deploy:
+      replicas: 3
+    networks:
+      - app_network
+
+  db:
+    image: mysql:5.7
+    ports:
+    - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: P@ssw0rd
+      MYSQL_DATABASE: Valery_DB
+    volumes:
+      - ./db/data:/var/lib/mysql
+      - ./db/logs:/var/log/mysql
+    networks:
+      - app_network
+
+volumes:
+  db_data:
+  db_logs:
+  app_logs:
+
+networks:
+  app_network:
+    driver: bridge
