@@ -1,15 +1,11 @@
-CREATE DATABASE IF NOT EXISTS app_db;
-USE app_db;
-
-CREATE TABLE IF NOT EXISTS counter (
-    id INT PRIMARY KEY,
-    value INT
-);
-INSERT INTO counter (id, value) VALUES (1, 0);
+CREATE DATABASE IF NOT EXISTS Valery_DB;
+USE Valery_DB;
 
 CREATE TABLE IF NOT EXISTS access_log (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    timestamp DATETIME,
-    client_ip VARCHAR(255),
-    internal_ip VARCHAR(255)
+    access_time DATETIME,
+    client_ip VARCHAR(50),
+    server_ip VARCHAR(50),
+    INDEX idx_access_time (access_time),
+    INDEX idx_client_ip (client_ip)
 );

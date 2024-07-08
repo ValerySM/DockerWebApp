@@ -1,9 +1,8 @@
-# db/Dockerfile
-FROM mysql:8
+FROM mysql:5.7
 
-ENV MYSQL_ROOT_PASSWORD=root
-ENV MYSQL_DATABASE=app_db
-ENV MYSQL_USER=app_user
-ENV MYSQL_PASSWORD=app_password
+ENV MYSQL_ROOT_PASSWORD=P@ssw0rd
+ENV MYSQL_DATABASE=Valery_DB
+ENV MYSQL_USER=Valery
+ENV MYSQL_PASSWORD=P@ssw0rd
 
 COPY init.sql /docker-entrypoint-initdb.d/

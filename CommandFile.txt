@@ -1,0 +1,6 @@
+docker-compose up --build
+docker-compose up -d
+Docker-compose down
+docker system prune
+.\scale.sh up
+.\scale.sh down
